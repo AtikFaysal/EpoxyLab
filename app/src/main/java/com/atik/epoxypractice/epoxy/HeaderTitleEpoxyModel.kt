@@ -2,13 +2,13 @@ package com.atik.epoxypractice.epoxy
 
 import com.atik.epoxypractice.R
 import com.atik.epoxypractice.ViewBindingKotlinModel
-import com.atik.epoxypractice.databinding.ItemTitleBinding
+import com.atik.epoxypractice.databinding.ItemTitleBoldBinding
 
 data class HeaderTitleEpoxyModel (
     private val title : String,
-) : ViewBindingKotlinModel<ItemTitleBinding>(R.layout.item_title) {
+) : ViewBindingKotlinModel<ItemTitleBoldBinding>(R.layout.item_title_bold) {
 
-    override fun ItemTitleBinding.bind() {
+    override fun ItemTitleBoldBinding.bind() {
         titleTv.text = title
     }
 }

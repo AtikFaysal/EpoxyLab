@@ -1,9 +1,13 @@
 package com.atik.epoxypractice.data
 
 data class UserEntity(
-    val userId : Int,
+    val userId : String,
     val fullName : String,
     val designation : String,
     val avatarUrl : String,
-    val itemClicked : Boolean
-)
+    var itemClicked : Boolean
+){
+    override fun toString(): String {
+        return "$itemClicked"
+    }
+}

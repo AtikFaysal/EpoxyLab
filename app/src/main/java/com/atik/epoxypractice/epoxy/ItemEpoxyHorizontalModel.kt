@@ -1,15 +1,15 @@
 package com.atik.epoxypractice.epoxy
 
-import android.view.View
+import androidx.core.content.ContextCompat
 import com.atik.epoxypractice.R
 import com.atik.epoxypractice.ViewBindingKotlinModel
 import com.atik.epoxypractice.data.UserEntity
 import com.atik.epoxypractice.databinding.ItemCaroselBinding
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 
 class ItemEpoxyHorizontalModel(
-    private val userEntity: UserEntity,
-    private val onItemClick : (View.OnClickListener)
+    private var userEntity: UserEntity,
+    private val onTaskSelected:(item: UserEntity)->Unit
 ) : ViewBindingKotlinModel<ItemCaroselBinding>(R.layout.item_carosel) {
 
     override fun ItemCaroselBinding.bind() {
@@ -17,10 +17,22 @@ class ItemEpoxyHorizontalModel(
         fullNameTv.text = userEntity.fullName
         designationTv.text = userEntity.designation
 
-        Picasso.get()
+        if(userEntity.itemClicked)
+            statusIv.setImageDrawable(ContextCompat.getDrawable(root.context, R.drawable.baseline_check_circle_24))
+        else statusIv.setImageDrawable(ContextCompat.getDrawable(root.context, R.drawable.baseline_add_circle_24))
+
+        Glide
+            .with(root.context)
             .load(userEntity.avatarUrl)
+            .placeholder(R.drawable.baseline_person_24)
             .into(userAvatarIv)
 
-        root.setOnClickListener(onItemClick)
+        statusIv.setOnClickListener{
+            onTaskSelected.invoke(userEntity)
+        }
+    }
+
+    fun modifyData(user : UserEntity){
+        userEntity = user
     }
 }

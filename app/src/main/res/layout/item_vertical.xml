@@ -2,11 +2,13 @@
 <com.iamkamrul.layout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_5sdp"
-    android:paddingHorizontal="@dimen/_5sdp"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:paddingHorizontal="@dimen/_8sdp"
+    android:paddingVertical="@dimen/_3sdp"
     android:background="#ffffff"
+    android:layout_marginHorizontal="@dimen/_25sdp"
     app:cl_background_shape="rectangle"
-    app:cl_corner_radius="@dimen/_5sdp"
+    app:cl_corner_radius="@dimen/_10sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -23,15 +25,16 @@
         android:id="@+id/titleTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:maxLines="1"
-        android:textSize="@dimen/_14sdp"
         android:layout_marginHorizontal="@dimen/_10sdp"
+        android:maxLines="1"
         android:paddingVertical="@dimen/_12sdp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#000000"
+        android:textSize="@dimen/_14sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iconIv"
         app:layout_constraintEnd_toStartOf="@+id/buttonTv"
+        app:layout_constraintStart_toEndOf="@+id/iconIv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="When it happen" />
 
     <com.iamkamrul.textview.TextViewBold

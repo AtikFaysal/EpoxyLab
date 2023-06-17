@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_5sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cl_corner_radius="@dimen/_10sdp">
@@ -10,11 +11,11 @@
     <com.iamkamrul.layout.ConstraintLayout
         android:id="@+id/userDetailsCl"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="wrap_content"
         android:background="#ffffff"
         app:cl_background_shape="rectangle"
         app:cl_corner_radius="@dimen/_15sdp"
-        android:paddingVertical="@dimen/_15sdp"
+        android:paddingVertical="@dimen/_25sdp"
         android:paddingHorizontal="@dimen/_5sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +26,7 @@
             android:id="@+id/userAvatarIv"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
-            android:src="@color/cardview_dark_background"
+            android:src="@drawable/baseline_person_24"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:maxLines="1"
+            android:paddingHorizontal="@dimen/_5sdp"
             android:textSize="@dimen/_14sdp"
             android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintTop_toBottomOf="@+id/userAvatarIv"
@@ -62,7 +64,7 @@
         android:id="@+id/statusIv"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
-        android:src="@drawable/baseline_check_circle_24"
+        android:src="@drawable/baseline_add_circle_24"
         app:layout_constraintTop_toBottomOf="@+id/userDetailsCl"
         app:layout_constraintBottom_toBottomOf="@+id/userDetailsCl"
         app:layout_constraintStart_toStartOf="parent"
