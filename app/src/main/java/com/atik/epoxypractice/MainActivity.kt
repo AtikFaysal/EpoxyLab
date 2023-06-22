@@ -18,7 +18,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        controller  = ItemEpoxyController()
+        controller  = ItemEpoxyController({
+            controller.requestModelBuild()
+        },{
+            controller.requestModelBuild()
+        })
 
         controller.userList = userDataProvider()
         controller.taskList = taskDataProvider()
@@ -34,7 +38,7 @@ fun userDataProvider() : List<UserEntity>{
     for (i in 0..10){
         users.add(
             UserEntity(
-                userId = UUID.randomUUID().toString(),
+                userId = i,
                 fullName = "Atik Faysal($i)",
                 avatarUrl = "https://images.mubicdn.net/images/cast_member/2184/cache-2992-1547409411/image-w856.jpg",
                 designation = "Software Eng",

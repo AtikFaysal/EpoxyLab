@@ -1,16 +1,21 @@
 package com.atik.epoxypractice.epoxy
 
+import android.util.Log
 import android.view.View
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.EpoxyModel
 import com.atik.epoxypractice.data.TaskEntity
 import com.atik.epoxypractice.data.UserEntity
-import java.util.UUID
 
-class ItemEpoxyController : EpoxyController(){
+class ItemEpoxyController(
+    private val onUserSelected:(user:UserEntity)->Unit,
+    private val onTaskSelected:(task:TaskEntity)->Unit,
+) : EpoxyController(){
 
+    var selectedUser = -1
     var userList = listOf<UserEntity>()
+    var selectedTask = -1
     var taskList = listOf<TaskEntity>()
 
     init {
@@ -26,10 +31,11 @@ class ItemEpoxyController : EpoxyController(){
 
         userList.forEach { item->
             itemViewList.add(
-                ItemEpoxyHorizontalModel(item){
-                    it.itemClicked = !it.itemClicked
-                    notifyModelChanged(0)
-                }.id("carosel_host", UUID.randomUUID().toString())
+                ItemEpoxyHorizontalModel(true,item){
+                    Log.d("---->","clicked")
+                    selectedUser = item.userId
+                    onUserSelected.invoke(item)
+                }.id("carosel_host", item.userId.toString())
             )
         }
 
@@ -43,10 +49,10 @@ class ItemEpoxyController : EpoxyController(){
         ).id("title_id","regular_text_title").addTo(this)
 
         taskList.forEach { item->
-            ItemTaskEpoxyModel(item){
-                item.isItemSelect = !item.isItemSelect
-                requestModelBuild()
-            }.id("post_list", UUID.randomUUID().toString()).addTo(this)
+            ItemTaskEpoxyModel(item.id == selectedTask, item){
+                selectedTask = item.id
+                onTaskSelected.invoke(item)
+            }.id("post_list",item.id.toString()).addTo(this)
         }
 
         ButtonEpoxyModel(
